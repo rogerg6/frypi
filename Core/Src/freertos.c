@@ -26,6 +26,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+#include "app.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -113,6 +114,7 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
+  app_tasks_init();
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
@@ -153,8 +155,7 @@ void LED_TaskFunc(void *argument)
   for(;;)
   {
     HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-    printf("%s %d\r\n", __FUNCTION__, __LINE__);
-    osDelay(500);
+    osDelay(1000);
   }
   /* USER CODE END LED_TaskFunc */
 }

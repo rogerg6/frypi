@@ -19,9 +19,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "usart.h"
-#include "stm32f4xx_hal_def.h"
-#include "stm32f4xx_hal_uart.h"
-#include <stdint.h>
 
 /* USER CODE BEGIN 0 */
 

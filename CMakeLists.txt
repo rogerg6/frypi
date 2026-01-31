@@ -45,11 +45,18 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
-)
+    ${CMAKE_CURRENT_SOURCE_DIR}/BSP/LCD/lcd_init.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/BSP/LCD/lcd.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/APP/app.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/APP/task/task_lcd.c)
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined include paths
+    ${CMAKE_CURRENT_SOURCE_DIR}/BSP/LCD
+    ${CMAKE_CURRENT_SOURCE_DIR}/SYSTEM
+    ${CMAKE_CURRENT_SOURCE_DIR}/APP
+
 )
 
 # Add project symbols (macros)
