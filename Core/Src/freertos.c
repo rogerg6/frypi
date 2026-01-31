@@ -19,14 +19,13 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "FreeRTOS.h"
-#include "stm32f411xe.h"
 #include "task.h"
 #include "main.h"
 #include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -154,6 +153,7 @@ void LED_TaskFunc(void *argument)
   for(;;)
   {
     HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+    printf("%s %d\r\n", __FUNCTION__, __LINE__);
     osDelay(500);
   }
   /* USER CODE END LED_TaskFunc */
