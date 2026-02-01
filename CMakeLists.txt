@@ -44,6 +44,8 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 
 # Add user sources here
 file(GLOB_RECURSE LVGL_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/lvgl/*.c)
+file(GLOB_RECURSE GUI_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/APP/GUI/*.c)
+file(GLOB_RECURSE FUNC_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/APP/Func/*.c)
 
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
@@ -52,7 +54,9 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/BSP/LCD/lcd.c
     ${CMAKE_CURRENT_SOURCE_DIR}/APP/app.c
     ${CMAKE_CURRENT_SOURCE_DIR}/APP/task/task_lcd.c
-    ${LVGL_SOURCES})
+    ${LVGL_SOURCES}
+    ${GUI_SOURCES}
+    ${FUNC_SOURCES})
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
@@ -61,6 +65,9 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/SYSTEM
     ${CMAKE_CURRENT_SOURCE_DIR}/APP
     ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/lvgl
+    ${CMAKE_CURRENT_SOURCE_DIR}/APP/GUI/
+    ${CMAKE_CURRENT_SOURCE_DIR}/APP/GUI/Screens/Inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/APP/Func/Inc
 )
 
 # Add project symbols (macros)

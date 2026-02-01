@@ -9,6 +9,8 @@
 #include "port/lv_port_disp.h"
 #include "port/lv_port_indev.h"
 
+#include "ui.h"
+
 static void event_handler(lv_event_t * e)
 {
     lv_event_code_t code = lv_event_get_code(e);
@@ -66,9 +68,11 @@ void LCD_task_init(void *argument)
    lv_port_disp_init();
    printf("lv port disp init ok\r\n");
    //lv_port_indev_init();
-    //ui_init();
+    ui_init();
+    
+   printf("lv ui init ok\r\n");
 
-  lv_example_btn_1();
+  // lv_example_btn_1();
 
   for(;;)
   {
