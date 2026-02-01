@@ -42,13 +42,17 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined library search paths
 )
 
+# Add user sources here
+file(GLOB_RECURSE LVGL_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/lvgl/*.c)
+
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
     ${CMAKE_CURRENT_SOURCE_DIR}/BSP/LCD/lcd_init.c
     ${CMAKE_CURRENT_SOURCE_DIR}/BSP/LCD/lcd.c
     ${CMAKE_CURRENT_SOURCE_DIR}/APP/app.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/APP/task/task_lcd.c)
+    ${CMAKE_CURRENT_SOURCE_DIR}/APP/task/task_lcd.c
+    ${LVGL_SOURCES})
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
@@ -56,7 +60,7 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/BSP/LCD
     ${CMAKE_CURRENT_SOURCE_DIR}/SYSTEM
     ${CMAKE_CURRENT_SOURCE_DIR}/APP
-
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/lvgl
 )
 
 # Add project symbols (macros)
