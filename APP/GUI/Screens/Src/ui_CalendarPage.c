@@ -12,6 +12,18 @@ lv_obj_t * ui_CalendarPageCalendar;
 
 ///////////////////// FUNCTIONS ////////////////////
 
+static void ui_event_CalendarPage(lv_event_t * e)
+{
+	lv_event_code_t event_code = lv_event_get_code(e);
+    if(event_code == LV_EVENT_GESTURE)
+    {
+        if(lv_indev_get_gesture_dir(lv_indev_get_act()) == LV_DIR_RIGHT)
+        {
+		    Page_Back();
+        }
+    }
+}
+
 
 ///////////////////// SCREEN init ////////////////////
 void ui_CalendarPage_screen_init(void)
@@ -32,6 +44,7 @@ void ui_CalendarPage_screen_init(void)
     lv_obj_set_style_radius(ui_CalendarPageCalendar, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_border_width(ui_CalendarPageCalendar, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+	lv_obj_add_event_cb(ui_CalendarPage, ui_event_CalendarPage, LV_EVENT_ALL, NULL);
 }
 
 ///////////////////// SCREEN deinit ////////////////////
