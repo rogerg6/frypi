@@ -67,8 +67,8 @@ void LCD_task_init(void *argument)
    printf("lv init ok\r\n");
    lv_port_disp_init();
    printf("lv port disp init ok\r\n");
-   //lv_port_indev_init();
-    ui_init();
+   lv_port_indev_init();
+   ui_init();
     
    printf("lv ui init ok\r\n");
 
