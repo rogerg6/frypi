@@ -8,16 +8,23 @@
 
 #include <stdio.h>
 
+osThreadId_t KeyTaskHandle;
+const osThreadAttr_t KeyTask_attributes = {
+  .name = "KeyTask",
+  .stack_size = 128 * 5,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+
 osThreadId_t LCDTaskHandle;
 const osThreadAttr_t LCDTask_attributes = {
   .name = "LCDTask",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
+  .stack_size = 128 * 24,
+  .priority = (osPriority_t) osPriorityNormal1,
 };
 
 osThreadId_t lvgl_TaskHandle;
 const osThreadAttr_t LVGL_hanlder_Task_attributes = {
-  .name = "LCDTask",
+  .name = "LVGLTask",
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
@@ -33,5 +40,6 @@ void LVGL_hanlder_task_init(void *params) {
 
 void app_tasks_init(void) {
     LCDTaskHandle = osThreadNew(LCD_task_init, NULL, &LCDTask_attributes);
+    KeyTaskHandle = osThreadNew(Key_task, NULL, &KeyTask_attributes);
     // lvgl_TaskHandle = osThreadNew(LVGL_hanlder_task_init, NULL, &LVGL_hanlder_Task_attributes);
 }

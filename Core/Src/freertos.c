@@ -152,6 +152,7 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+    // printf("idle work\r\n");
     osDelay(1);
   }
   /* USER CODE END StartDefaultTask */
